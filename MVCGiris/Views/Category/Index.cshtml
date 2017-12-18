@@ -1,0 +1,38 @@
+﻿@model List<Category>
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<h2>Toplam <b>@Model.Count</b> adet kategori bulunmakta.</h2>
+<ul class="nav nav-pills" role="tablist">
+    @foreach (var item in Model)
+    {
+        <li class="dropdown-menu" role="presentation">
+            @if (item.Products.Count > 0)
+            {
+                <a href="#" class="dropdown-toggle" id="drop4" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    @item.CategoryName (@item.Products.Count)
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu altmenu">
+                    @foreach (var urun in item.Products.OrderByDescending(x => x.UnitPrice))
+                    {
+                        <li>
+                            <a href="@Url.Action("Detail", "Product", new { id = urun.ProductID })" class="btn btn-default btn-sm">
+                            @urun.ProductName - @($"{urun.UnitPrice:c2}")
+                            </a>
+                        </li>
+                        //Product/Detay/15
+                        //Product/Detay?urunid=15&ad=tofu
+                    }
+                </ul>
+            }
+        </li>
+    }
+</ul>
+<style>
+    .altmenu {
+        position: relative;
+        z-index: 9999;
+    }
+</style>

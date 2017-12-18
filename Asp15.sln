@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 MVC Giriş", "1 MVC Giriş", "{D42FF87A-C39E-4214-AA56-9EA134E5F309}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCGiris", "MVCGiris\MVCGiris.csproj", "{3D624F7D-94E8-41F1-B090-ACA751E7E8F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D624F7D-94E8-41F1-B090-ACA751E7E8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D624F7D-94E8-41F1-B090-ACA751E7E8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D624F7D-94E8-41F1-B090-ACA751E7E8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D624F7D-94E8-41F1-B090-ACA751E7E8F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3D624F7D-94E8-41F1-B090-ACA751E7E8F4} = {D42FF87A-C39E-4214-AA56-9EA134E5F309}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39AE4FA5-344E-4840-857C-85648C87BC5E}
+	EndGlobalSection
+EndGlobal
