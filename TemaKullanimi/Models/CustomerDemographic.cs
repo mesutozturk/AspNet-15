@@ -7,25 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TemaKullanimi.Views
+namespace TemaKullanimi.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class CustomerDemographic
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public CustomerDemographic()
         {
-            this.Products = new HashSet<Product>();
+            this.Customers = new HashSet<Customer>();
         }
     
-        public int CategoryID { get; set; }
-        public string CategoryName { get; set; }
-        public string Description { get; set; }
-        public byte[] Picture { get; set; }
+        public string CustomerTypeID { get; set; }
+        public string CustomerDesc { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

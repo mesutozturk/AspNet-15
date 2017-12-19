@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TemaKullanimi.Views
+namespace TemaKullanimi.Models
 {
     using System;
     using System.Collections.Generic;

@@ -97,84 +97,120 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\site.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Views\NorthModel.Context.tt">
+    <Content Include="Models\NorthModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NorthModel.Context.cs</LastGenOutput>
       <DependentUpon>NorthModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Views\NorthModel.tt">
+    <Content Include="Models\NorthModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NorthModel.edmx</DependentUpon>
       <LastGenOutput>NorthModel.cs</LastGenOutput>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\app.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Views\Category.cs">
+    <Compile Include="Models\Category.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Customer.cs">
+    <Compile Include="Models\Customer.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\CustomerDemographic.cs">
+    <Compile Include="Models\CustomerDemographic.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Employee.cs">
+    <Compile Include="Models\Employee.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\NorthModel.Context.cs">
+    <Compile Include="Models\NorthModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NorthModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\NorthModel.cs">
+    <Compile Include="Models\NorthModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\NorthModel.Designer.cs">
+    <Compile Include="Models\NorthModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NorthModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Order.cs">
+    <Compile Include="Models\Order.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Order_Detail.cs">
+    <Compile Include="Models\Order_Detail.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Product.cs">
+    <Compile Include="Models\Product.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Region.cs">
+    <Compile Include="Models\Region.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Shipper.cs">
+    <Compile Include="Models\Shipper.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Supplier.cs">
+    <Compile Include="Models\Supplier.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Views\Territory.cs">
+    <Compile Include="Models\Territory.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Views\NorthModel.edmx">
+    <EntityDeploy Include="Models\NorthModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NorthModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Views\NorthModel.edmx.diagram">
+    <Content Include="Models\NorthModel.edmx.diagram">
       <DependentUpon>NorthModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -184,8 +220,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -1,0 +1,17 @@
+﻿.header{
+    height:100px;
+    background-color:lightskyblue;
+    margin-bottom:20px;
+}
+.navigasyon {
+    height: 70px;
+    margin-bottom: 20px;
+    background-color: lightskyblue;
+    color:tomato;
+}
+.footer {
+    height: 100px;
+    background-color: lightskyblue;
+    margin-top: 20px;
+    border-top:2px solid tomato;
+}

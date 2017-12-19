@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Layout Eğitimi</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
+    <meta name="keywords" content="mvc,aspnet,entityframework,layout,eğitim,@ViewBag.Keywords" />
+    <meta name="description" content="ASP.Net MVC Eğitimi - @ViewBag.Description" />
+</head>
+<body>
+    <div class="container">
+        <div class="row header">
+            <div class="col-md-12">
+                Header alanı
+            </div>
+        </div>
+        <div class="row navigasyon">
+            navigasyon alanı
+        </div>
+        <div class="row">
+            <div class="container">
+                @*içerik alanım başlangıç*@
+                @RenderBody()
+                @*içerik alanım bitiş*@
+            </div>
+        </div>
+        <div class="row footer">
+            footer alanı
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.2.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/app.js"></script>
+</body>
+</html>
