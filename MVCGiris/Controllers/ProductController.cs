@@ -19,9 +19,27 @@ namespace MVCGiris.Controllers
             var urun = db.Products.Find(id.Value);
             if (urun == null)
                 return View("Error");
+            //ViewData["kategoriler"] = "asd";
+            //ViewBag.kategoriler = "asd";
+            var kategoriler = new List<SelectListItem>();
+            kategoriler.Add(new SelectListItem
+            {
+                Text = "No Category",
+                Value = "null"
+            });
+            db.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList()
+                .ForEach(x => kategoriler.Add(new SelectListItem()
+                {
+                    Text = x.CategoryName,
+                    Value = x.CategoryID.ToString()
+                }));
+            ViewBag.Kategoriler = kategoriler;
             return View(urun);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Update(Product model)
         {
             if (model == null)
@@ -35,6 +53,7 @@ namespace MVCGiris.Controllers
                 urun.ProductName = model.ProductName;
                 urun.UnitPrice = model.UnitPrice;
                 urun.Discontinued = model.Discontinued;
+                urun.CategoryID = model.CategoryID;
                 db.SaveChanges();
                 return RedirectToAction("Detail", new { id = urun.ProductID });
             }
