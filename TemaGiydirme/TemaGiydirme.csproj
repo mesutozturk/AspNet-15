@@ -44,10 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -114,6 +122,13 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <EntityDeploy Include="Models\NorthModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NorthModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NorthModel.edmx.diagram">
+      <DependentUpon>NorthModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="img\crossword.png" />
     <Content Include="img\product-1.jpg" />
@@ -137,6 +152,16 @@
     <Content Include="js\jquery.sticky.js" />
     <Content Include="js\main.js" />
     <Content Include="js\owl.carousel.min.js" />
+    <Content Include="Models\NorthModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthModel.edmx</DependentUpon>
+      <LastGenOutput>NorthModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NorthModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthModel.edmx</DependentUpon>
+      <LastGenOutput>NorthModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -144,11 +169,70 @@
     <Content Include="Scripts\jquery-3.2.1.slim.js" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
     <Content Include="Web.config" />
+    <Content Include="Views\Shared\_PartialHeader.cshtml" />
+    <Content Include="Views\Shared\_PartialBrandingArea.cshtml" />
+    <Content Include="Views\Shared\_PartialMainMenu.cshtml" />
+    <Content Include="Views\Shared\_PartialSlider.cshtml" />
+    <Content Include="Views\Shared\_PartialPromo.cshtml" />
+    <Content Include="Views\Shared\_PartialBrandArea.cshtml" />
+    <Content Include="Views\Shared\_PartialProductWidget.cshtml" />
+    <Content Include="Views\Shared\_PartialFooterTop.cshtml" />
+    <Content Include="Views\Shared\_PartialFooterBottom.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomerDemographic.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NorthModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NorthModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NorthModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order_Detail.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Product.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Region.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Shipper.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Supplier.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Territory.cs">
+      <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -167,8 +251,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

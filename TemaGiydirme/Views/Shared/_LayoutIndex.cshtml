@@ -28,9 +28,27 @@
     <![endif]-->
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+    @{ 
+        Html.RenderAction("headerResult", "Home");
+        Html.RenderAction("brandingAreaResult", "Home");
+        Html.RenderAction("mainMenuResult", "Home");
+        Html.RenderAction("sliderResult", "Home");
+        Html.RenderAction("promoResult", "Home");
+    }
+    <div class="maincontent-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </div> <!-- End main content area -->
+    @{
+        Html.RenderAction("brandAreaResult", "Home");
+        Html.RenderAction("productWidgetResult", "Home");
+        Html.RenderAction("footerTopResult", "Home");
+        Html.RenderAction("footerBottomResult", "Home");
+    }
 
     <!-- Latest jQuery form server -->
     <script src="~/Scripts/jquery-3.2.1.js"></script>

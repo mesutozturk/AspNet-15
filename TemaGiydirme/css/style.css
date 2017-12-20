@@ -192,9 +192,9 @@ z-index: 9;
   top: 0;
   width: 100%;
 }
-.slide-one {background-image: url(img/slide-1.jpg)}
-.slide-two {background-image: url(img/slide-2.jpg)}
-.slide-three {background-image: url(img/slide-3.jpg)}
+.slide-one {background-image: url(/img/slide-1.jpg)}
+.slide-two {background-image: url(/img/slide-2.jpg)}
+.slide-three {background-image: url(/img/slide-3.jpg)}
 .slide-text {color: #fff;font-size: 18px;font-weight: 200}
 .slide-text h2 {
   font-size: 45px;font-weight: 200
@@ -560,7 +560,7 @@ width: 10px;
   margin: 10px 0 0;
 }
 
-.product-big-title-area {background: url(img/crossword.png) repeat scroll 0 0 #1ABC9C}
+.product-big-title-area {background: url(/img/crossword.png) repeat scroll 0 0 #1ABC9C}
 
 .product-bit-title h2 {
   font-family: raleway;
