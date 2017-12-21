@@ -9,16 +9,31 @@ namespace TemaGiydirme.Controllers
 {
     public class HomeController : Controller
     {
+        const int pageSize = 12;
         // GET: Home
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult Shop()
+        public ActionResult Shop(int? page = 1)
         {
             ViewBag.BigTitle = "Ürünler";
             NorthwindContext context = new NorthwindContext();
-            var model = context.Products.Take(20).ToList();
+
+            var model = context.Products
+                .Where(x => x.Discontinued == false).
+                OrderBy(x => x.UnitPrice)
+                .Skip((page.Value - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            if (!model.Any())
+                return RedirectToAction("Shop");
+
+            var total = context.Products.Where(x => x.Discontinued == false).Count();
+            ViewBag.ToplamSayfa = (int)Math.Ceiling(total / (double)pageSize);
+            ViewBag.Suan = page;
+
             return View(model);
         }
         //public ActionResult Detail(int? productid,bool? active)
@@ -35,11 +50,23 @@ namespace TemaGiydirme.Controllers
             return View(urun);
         }
         #region Partials
-        public PartialViewResult detailSidebarResult(int categoryid)
+        public PartialViewResult detailSidebarResult(int categoryid, int productid)
         {
             NorthwindContext context = new NorthwindContext();
-            var model = context.Products.Where(x => x.CategoryID == categoryid).Take(4).ToList();
-            return PartialView("_PartialDetailSidebar",model);
+            var model = context.Products.Where(x => x.CategoryID == categoryid && x.ProductID != productid).Take(4).ToList();
+            return PartialView("_PartialDetailSidebar", model);
+        }
+        public PartialViewResult relatedProductsResult(int productid)
+        {
+            NorthwindContext context = new NorthwindContext();
+            var rnd = new Random();
+            var model = context.Products
+                .Where(x => x.ProductID != productid)
+                .ToList()
+                .OrderBy(x => rnd.Next())
+                .Take(6)
+                .ToList();
+            return PartialView("_PartialRelatedProducts", model);
         }
         public PartialViewResult headerResult()
         {

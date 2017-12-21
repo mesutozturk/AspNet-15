@@ -246,6 +246,7 @@
     <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Home\Detail.cshtml" />
     <Content Include="Views\Shared\_PartialDetailSidebar.cshtml" />
+    <Content Include="Views\Shared\_PartialRelatedProducts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
