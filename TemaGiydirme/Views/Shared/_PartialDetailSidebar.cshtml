@@ -1,0 +1,34 @@
+﻿@model List<TemaGiydirme.Models.Product>
+
+<div class="single-sidebar">
+    <h2 class="sidebar-title">Search Products</h2>
+    <form action="">
+        <input type="text" placeholder="Search products...">
+        <input type="submit" value="Search">
+    </form>
+</div>
+
+<div class="single-sidebar">
+    <h2 class="sidebar-title">Diğer Ürünler</h2>
+    @foreach (var item in Model)
+    {
+        <div class="thubmnail-recent">
+            <img src="/img/product-thumb-1.jpg" class="recent-thumb" alt="">
+            <h2><a href="@Url.Action("Detail","Home",new { id=item.ProductID})">@item.ProductName</a></h2>
+            <div class="product-sidebar-price">
+                <ins>@($"{item.UnitPrice:c2}")</ins> <del>@($"{item.UnitPrice * 1.12m:c2}")</del>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="single-sidebar">
+    <h2 class="sidebar-title">Recent Posts</h2>
+    <ul>
+        <li><a href="">Sony Smart TV - 2015</a></li>
+        <li><a href="">Sony Smart TV - 2015</a></li>
+        <li><a href="">Sony Smart TV - 2015</a></li>
+        <li><a href="">Sony Smart TV - 2015</a></li>
+        <li><a href="">Sony Smart TV - 2015</a></li>
+    </ul>
+</div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TemaGiydirme.Models;
 
 namespace TemaGiydirme.Controllers
 {
@@ -13,7 +14,33 @@ namespace TemaGiydirme.Controllers
         {
             return View();
         }
+        public ActionResult Shop()
+        {
+            ViewBag.BigTitle = "Ürünler";
+            NorthwindContext context = new NorthwindContext();
+            var model = context.Products.Take(20).ToList();
+            return View(model);
+        }
+        //public ActionResult Detail(int? productid,bool? active)
+        public ActionResult Detail(int? id)
+        {
+            if (id == null)
+                return RedirectToAction("Index");
+            NorthwindContext context = new NorthwindContext();
+            var urun = context.Products.Find(id.Value);
+            if (urun == null)
+                return RedirectToAction("Index");
+
+            ViewBag.BigTitle = urun.ProductName;
+            return View(urun);
+        }
         #region Partials
+        public PartialViewResult detailSidebarResult(int categoryid)
+        {
+            NorthwindContext context = new NorthwindContext();
+            var model = context.Products.Where(x => x.CategoryID == categoryid).Take(4).ToList();
+            return PartialView("_PartialDetailSidebar",model);
+        }
         public PartialViewResult headerResult()
         {
             var model = "Merhaba Partial";
