@@ -23,7 +23,7 @@ namespace TemaGiydirme.Controllers
             var model = context.Products
                 .Where(x => x.Discontinued == false).
                 OrderBy(x => x.UnitPrice)
-                .Skip((page.Value - 1) * pageSize)
+                .Skip((page.Value < 1 ? 1 : page.Value - 1) * pageSize)
                 .Take(pageSize)
                 .ToList();
 

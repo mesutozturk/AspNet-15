@@ -35,7 +35,7 @@
             <nav>
                 <ul class="pagination">
                     <li>
-                        <a href="#" aria-label="Previous" id="pageprevius">
+                        <a href="@Url.Action("Shop","Home",new { page=ViewBag.Suan-1})" aria-label="Previous" id="pageprevius">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
@@ -48,7 +48,7 @@
                         </li>
                     }
                     <li>
-                        <a href="#" aria-label="Next" id="pagenext">
+                        <a href="@Url.Action("Shop","Home",new { page=ViewBag.Suan+1})" aria-label="Next" id="pagenext">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
@@ -58,3 +58,15 @@
     </div>
 </div>
 
+@section Scripts{
+    <script>
+    var suan =@ViewBag.Suan;
+    var toplam =@ViewBag.ToplamSayfa;
+    if (suan == 1)
+    {
+        $("#pageprevius").removeAttr("href");
+    }
+    if (suan == toplam)
+        $("#pagenext").removeAttr("href");
+    </script>
+}
