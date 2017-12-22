@@ -24,13 +24,13 @@
             $scope.sepeteekle = function (item) {
                 var varmi = false;
                 for (var i = 0; i < $scope.sepet.length; i++) {
-                    if ($scope.sepet[i].id == item.id) {
+                    if ($scope.sepet[i].ProductID == item.ProductID) {
                         varmi = true;
-                        $scope.sepet[i].adet++;
+                        $scope.sepet[i].Count++;
                     }
                 }
                 if (!varmi) {
-                    item.adet = 1;
+                    item.Count = 1;
                     $scope.sepet.push(item);
                 }
                 sepetihesapla();
@@ -38,7 +38,7 @@
             function sepetihesapla() {
                 var toplam = 0;
                 for (var i = 0; i < $scope.sepet.length; i++) {
-                    toplam += $scope.sepet[i].adet * $scope.sepet[i].fiyat;
+                    toplam += $scope.sepet[i].Count * $scope.sepet[i].UnitPrice;
                 }
                 $scope.toplam = toplam;
             }
@@ -68,7 +68,7 @@
         <div ng-if="sepet.length>0">
             <ul>
                 <li ng-repeat="item in sepet">
-                    {{item.ad}} x {{item.adet}} = {{item.adet*item.fiyat}} ₺
+                    {{item.ProductName}} x {{item.Count}} = {{item.Count*item.UnitPrice}} ₺
                 </li>
                 <li>Toplam: <strong>{{toplam}} ₺</strong></li>
             </ul>
