@@ -51,6 +51,26 @@
                     console.log(response.data);
                 });
             }
+            $scope.sepetionayla = function () {
+                var model = [];
+                for (var i = 0; i < $scope.sepet.length; i++) {
+                    var urun = $scope.sepet[i];
+                    model.push({
+                        ProductID: urun.ProductID,
+                        UnitPrice: urun.UnitPrice,
+                        Count: urun.Count
+                    });
+                }
+                console.log(dd);
+                $http({
+                    url: '@Url.Action("SiparisOlustur","Home")',
+                    method: 'POST',
+                    dataType:"json",
+                    data: model
+                }).then(function (response) {
+                    alert(response.data.message);
+                });
+            }
             init();
         });
     </script>
@@ -71,6 +91,9 @@
                     {{item.ProductName}} x {{item.Count}} = {{item.Count*item.UnitPrice}} ₺
                 </li>
                 <li>Toplam: <strong>{{toplam}} ₺</strong></li>
+                <li>
+                    <input type="button" value="Sepeti Onayla" ng-click="sepetionayla()" />
+                </li>
             </ul>
         </div>
     </div>

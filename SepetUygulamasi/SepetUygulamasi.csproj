@@ -161,6 +161,7 @@
     <Compile Include="Models\Shipper.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SiparisViewModel.cs" />
     <Compile Include="Models\Supplier.cs">
       <DependentUpon>NorthModel.tt</DependentUpon>
     </Compile>
