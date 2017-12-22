@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html ng-app="app">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/angular.js"></script>
+    <script>
+        var app = angular.module("app", []); // referance alanı
+        app.controller("SepetCtrl", function ($scope, $http) { // using alanı
+            console.log("yüklendi");
+            $scope.urunler = [];
+            $scope.sepet = [];
+            $scope.toplam = 0;
+            var self = this;
+            function init() {
+                 urunlerigetir();
+            }
+            $scope.sepeteekle = function (item) {
+                var varmi = false;
+                for (var i = 0; i < $scope.sepet.length; i++) {
+                    if ($scope.sepet[i].id == item.id) {
+                        varmi = true;
+                        $scope.sepet[i].adet++;
+                    }
+                }
+                if (!varmi) {
+                    item.adet = 1;
+                    $scope.sepet.push(item);
+                }
+                sepetihesapla();
+            };
+            function sepetihesapla() {
+                var toplam = 0;
+                for (var i = 0; i < $scope.sepet.length; i++) {
+                    toplam += $scope.sepet[i].adet * $scope.sepet[i].fiyat;
+                }
+                $scope.toplam = toplam;
+            }
+            function urunlerigetir() {
+                $http({
+                    url: '@Url.Action("UrunleriGetir","Home")',
+                    method: 'GET'
+                }).then(function (response) {
+                    $scope.urunler = response.data;
+                    console.log(response.data);
+                });
+            }
+            init();
+        });
+    </script>
+</head>
+<body>
+    <div class="urunler" ng-controller="SepetCtrl">
+        <input type="text" ng-model="ara" placeholder="Ürün ara..." />
+        <ul>
+            <li ng-repeat="item in urunler | filter:ara">
+                {{item.ProductName}} - {{item.UnitPrice}} ₺
+                <input type="button" value="Sepete Ekle" ng-click="sepeteekle(item)" />
+            </li>
+        </ul>
+        <div ng-if="sepet.length==0"><strong>Sepetiniz Boş</strong></div>
+        <div ng-if="sepet.length>0">
+            <ul>
+                <li ng-repeat="item in sepet">
+                    {{item.ad}} x {{item.adet}} = {{item.adet*item.fiyat}} ₺
+                </li>
+                <li>Toplam: <strong>{{toplam}} ₺</strong></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

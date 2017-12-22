@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemaGiydirme", "TemaGiydirm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemaETicaret", "TemaETicaret\TemaETicaret.csproj", "{B1177BB6-185D-476C-A9A1-0D0FEF2840F6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 Angular JS", "3 Angular JS", "{239FFC3E-585A-459E-8C1D-69206C10E3E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SepetUygulamasi", "SepetUygulamasi\SepetUygulamasi.csproj", "{5E7638BA-7600-4688-AD6A-EDA2D4992C8D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{B1177BB6-185D-476C-A9A1-0D0FEF2840F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1177BB6-185D-476C-A9A1-0D0FEF2840F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1177BB6-185D-476C-A9A1-0D0FEF2840F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E7638BA-7600-4688-AD6A-EDA2D4992C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E7638BA-7600-4688-AD6A-EDA2D4992C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E7638BA-7600-4688-AD6A-EDA2D4992C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E7638BA-7600-4688-AD6A-EDA2D4992C8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +54,7 @@ Global
 		{878B525B-E9CE-43E7-8651-EB0328DEC8C7} = {D42FF87A-C39E-4214-AA56-9EA134E5F309}
 		{728F5970-AD19-48E7-A9B9-0F6A47092DD5} = {BC1AFA14-0DB8-463B-B75A-27586AE075AF}
 		{B1177BB6-185D-476C-A9A1-0D0FEF2840F6} = {BC1AFA14-0DB8-463B-B75A-27586AE075AF}
+		{5E7638BA-7600-4688-AD6A-EDA2D4992C8D} = {239FFC3E-585A-459E-8C1D-69206C10E3E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39AE4FA5-344E-4840-857C-85648C87BC5E}
