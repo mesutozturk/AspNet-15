@@ -53,6 +53,7 @@
     <Compile Include="Models\Kategori.cs" />
     <Compile Include="Models\Temel.cs" />
     <Compile Include="Models\Urun.cs" />
+    <Compile Include="Models\UrunDosya.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

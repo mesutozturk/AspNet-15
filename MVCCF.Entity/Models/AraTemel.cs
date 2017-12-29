@@ -12,6 +12,6 @@ namespace MVCCF.Entity.Models
         [Key]
         [Column(Order = 2)]
         public T2 Id2 { get; set; }
-        public DateTime EklenmeTarihi { get; set; }=DateTime.Now
+        public DateTime EklenmeTarihi { get; set; }=DateTime.Now;
     }
 }

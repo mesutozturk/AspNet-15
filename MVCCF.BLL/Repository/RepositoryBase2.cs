@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVCCF.BLL.Repository
 {
-    public abstract class RepositoryBase<T, ID>:IDisposable where T : Temel<ID>
+    public class RepositoryBase2<T, ID1, ID2> : IDisposable where T : AraTemel<ID1, ID2>
     {
         protected static MyContext dbContext;
         public async virtual Task<List<T>> GetAll()
@@ -23,12 +23,12 @@ namespace MVCCF.BLL.Repository
                 throw ex;
             }
         }
-        public async virtual Task<T> GetById(ID id)
+        public async virtual Task<T> GetById(ID1 id1, ID2 id2)
         {
             try
             {
                 dbContext = new MyContext();
-                return await dbContext.Set<T>().FindAsync(id);
+                return await dbContext.Set<T>().FindAsync(id1, id2);
             }
             catch (Exception ex)
             {
