@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MVCCF.BLL.Repository
 {
-    public abstract class RepositoryBase<T, ID>:IDisposable where T : Temel<ID>
+    public abstract class RepositoryBase<T, ID> : IDisposable where T : Temel<ID>
     {
         protected static MyContext dbContext;
         public async virtual Task<List<T>> GetAll()
@@ -35,37 +35,37 @@ namespace MVCCF.BLL.Repository
                 throw ex;
             }
         }
-        public async virtual void Insert(T entity)
+        public async virtual Task<int> Insert(T entity)
         {
             try
             {
                 dbContext = dbContext ?? new MyContext();
                 dbContext.Set<T>().Add(entity);
-                await dbContext.SaveChangesAsync();
+                return await dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public async virtual void Delete(T entity)
+        public async virtual Task<int> Delete(T entity)
         {
             try
             {
                 dbContext = dbContext ?? new MyContext();
                 dbContext.Set<T>().Remove(entity);
-                await dbContext.SaveChangesAsync();
+                return await dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-        public async virtual void Update()
+        public async virtual Task<int> Update()
         {
             try
             {
-                await dbContext.SaveChangesAsync();
+                return await dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
             {

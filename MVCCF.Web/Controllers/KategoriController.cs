@@ -54,7 +54,7 @@ namespace MVCCF.Web.Controllers
             };
             try
             {
-                new KategoriRepo().Insert(yeniKategori);
+                await new KategoriRepo().Insert(yeniKategori);
                 //dosya upload
                 if (model.Dosya != null && model.Dosya.ContentType.Contains("image") && model.Dosya.ContentLength > 0)
                 {
@@ -71,7 +71,7 @@ namespace MVCCF.Web.Controllers
                     ResimBoyutlandir(400, 300, filePath);
                     var kat = await new KategoriRepo().GetById(yeniKategori.Id);
                     kat.KategoriFotoUrl = @"/Uploads/" + fileName + extName;
-                    new KategoriRepo().Update();
+                    await new KategoriRepo().Update();
                     return RedirectToAction("Index");
                 }
             }
