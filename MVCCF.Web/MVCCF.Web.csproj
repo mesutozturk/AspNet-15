@@ -195,6 +195,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Kategori\Index.cshtml" />
     <Content Include="Views\Kategori\Ekle.cshtml" />
+    <Content Include="Views\Kategori\Guncelle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

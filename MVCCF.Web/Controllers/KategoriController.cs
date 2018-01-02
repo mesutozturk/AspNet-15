@@ -22,21 +22,7 @@ namespace MVCCF.Web.Controllers
         }
         public async Task<ActionResult> Ekle()
         {
-            var kategoriList = await new KategoriRepo().GetAll();
-            var kategoriler = new List<SelectListItem>();
-            kategoriler.Add(new SelectListItem()
-            {
-                Text = "Üst Kategorisi Yok",
-                Value = "0"
-            });
-            kategoriList.ForEach(x =>
-            kategoriler.Add(new SelectListItem
-            {
-                Text = x.KategoriAdi,
-                Value = x.Id.ToString()
-            })
-            );
-            ViewBag.kategoriler = kategoriler;
+            ViewBag.kategoriler = await KategoriSelectList();
             return View();
         }
         [HttpPost]
@@ -82,14 +68,55 @@ namespace MVCCF.Web.Controllers
             }
             return RedirectToAction("Ekle");
         }
-        public ActionResult Guncelle(int? id)
+        public async Task<ActionResult> Guncelle(int? id)
         {
             if (id == null)
                 return RedirectToAction("Index");
-            var guncellenecek = new KategoriRepo().GetById(id.Value);
+            var guncellenecek = await new KategoriRepo().GetById(id.Value);
             if (guncellenecek == null)
                 return RedirectToAction("Index");
-            return View(guncellenecek);
+            ViewBag.kategoriler = await KategoriSelectList();
+            var model = new KategoriViewModel()
+            {
+                Id = guncellenecek.Id,
+                Aciklama = guncellenecek.Aciklama,
+                AktifMi = guncellenecek.AktifMi,
+                EklenmeTarihi = guncellenecek.EklenmeTarihi,
+                KategoriAdi = guncellenecek.KategoriAdi,
+                KategoriFotoUrl = guncellenecek.KategoriFotoUrl,
+                UstKategoriId = guncellenecek.UstKategoriId
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<ActionResult> Guncelle(KategoriViewModel model)
+        {
+            if (model == null)
+                return RedirectToAction("Index");
+            var kategori = await new KategoriRepo().GetById(model.Id);
+            if (kategori == null)
+                return RedirectToAction("Index");
+            kategori.KategoriAdi = model.KategoriAdi;
+            kategori.UstKategoriId = model.UstKategoriId == 0 ? null : model.UstKategoriId;
+            kategori.Aciklama = model.Aciklama;
+            if (model.Dosya != null)
+            {
+                var dosya = model.Dosya;
+                string fileName = Path.GetFileNameWithoutExtension(dosya.FileName);
+                string extName = Path.GetExtension(dosya.FileName);
+                fileName = SiteSettings.UrlFormatConverter(fileName);
+                fileName += Guid.NewGuid().ToString().Replace("-", "");
+                var directoryPath = Server.MapPath("~/Uploads");
+                var filePath = Server.MapPath("~/Uploads/") + fileName + extName;
+                if (!Directory.Exists(directoryPath))
+                    Directory.CreateDirectory(directoryPath);
+                dosya.SaveAs(filePath);
+                ResimBoyutlandir(400, 300, filePath);
+                System.IO.File.Delete(Server.MapPath(kategori.KategoriFotoUrl));
+                kategori.KategoriFotoUrl = @"/Uploads/" + fileName + extName;
+            }
+            await new KategoriRepo().Update();
+            return RedirectToAction("Index");
         }
 
     }

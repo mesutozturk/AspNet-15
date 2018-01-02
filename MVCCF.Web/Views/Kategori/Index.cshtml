@@ -6,4 +6,34 @@
     Yeni Kategori Ekle
 </a>
 <h2>Toplam Kategori: @Model.Count</h2>
-
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Resim</th>
+            <th>Kategori Adı</th>
+            <th>Açıklama</th>
+            <th>Düzen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int sayac = 0;
+        }
+        @foreach (var item in Model)
+        {
+            sayac++;
+            <tr>
+                <th>@sayac</th>
+                <td>
+                    <img src="@item.KategoriFotoUrl" alt="@item.KategoriAdi" class="img img-rounded" width="90" height="80" />
+                </td>
+                <td>@item.KategoriAdi</td>
+                <td>@item.Aciklama</td>
+                <td>
+                    <a href="@Url.Action("Guncelle", "Kategori", new { id = item.Id })" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
