@@ -8,11 +8,8 @@ namespace MVCCF.Entity.Models
         public string DosyaYolu { get; set; }
         public string Uzanti { get; set; }
         public long? UrunId { get; set; }
-        public int? KategoriId { get; set; }
 
         [ForeignKey("UrunId")]
         public virtual Urun Urun { get; set; }
-        [ForeignKey("KategoriId")]
-        public virtual Kategori Kategori { get; set; }
     }
 }

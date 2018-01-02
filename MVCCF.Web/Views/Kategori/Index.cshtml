@@ -1,0 +1,9 @@
+﻿@model List<Kategori>
+@{
+    ViewBag.Title = "Kategoriler";
+}
+<a href="@Url.Action("Ekle","Kategori")" class="btn btn-success">
+    Yeni Kategori Ekle
+</a>
+<h2>Toplam Kategori: @Model.Count</h2>
+

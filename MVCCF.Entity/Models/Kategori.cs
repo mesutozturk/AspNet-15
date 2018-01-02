@@ -12,10 +12,10 @@ namespace MVCCF.Entity.Models
         public string KategoriAdi { get; set; }
         public string Aciklama { get; set; }
         public int? UstKategoriId { get; set; }
+        public string KategoriFotoUrl { get; set; }
 
         [ForeignKey("UstKategoriId")]
         public virtual Kategori UstKategori { get; set; }
-        public virtual List<Dosya> Dosyalar { get; set; } = new List<Dosya>();
         public virtual List<Urun> Urunler { get; set; } = new List<Urun>();
     }
 }
