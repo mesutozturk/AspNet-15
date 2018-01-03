@@ -61,6 +61,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\KategoriViewModel.cs" />
+    <Compile Include="ViewModels\UrunViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

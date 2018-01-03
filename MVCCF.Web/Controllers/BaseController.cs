@@ -1,5 +1,6 @@
 ﻿using MVCCF.BLL.Repository;
 using MVCCF.Entity.Models;
+using MVCCF.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

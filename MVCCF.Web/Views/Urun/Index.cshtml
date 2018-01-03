@@ -1,0 +1,37 @@
+﻿@model List<Urun>
+@{
+    ViewBag.Title = "Ürünler";
+}
+<a href="@Url.Action("Ekle","Urun")" class="btn btn-success">
+    Yeni Ürün Ekle
+</a>
+<h2>Toplam Ürün: @Model.Count</h2>
+<table class="table table-responsive table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ürün Adı</th>
+            <th>Kategorisi</th>
+            <th>Fiyat</th>
+            <th>Düzen</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int sayac = 0;
+        }
+        @foreach (var item in Model)
+        {
+            sayac++;
+            <tr>
+                <th>@sayac</th>
+                <td>@item.UrunAdi</td>
+                <td>@item.Kategori.KategoriAdi</td>
+                <td>@($"{item.Fiyat:c2}");</td>
+                <td>
+                    <a href="@Url.Action("Guncelle", "Urun", new { id = item.Id })" class="btn btn-warning">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

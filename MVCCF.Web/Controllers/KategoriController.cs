@@ -58,15 +58,14 @@ namespace MVCCF.Web.Controllers
                     var kat = await new KategoriRepo().GetById(yeniKategori.Id);
                     kat.KategoriFotoUrl = @"/Uploads/" + fileName + extName;
                     await new KategoriRepo().Update();
-                    return RedirectToAction("Index");
                 }
+                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return RedirectToAction("Ekle");
             }
-            return RedirectToAction("Ekle");
         }
         public async Task<ActionResult> Guncelle(int? id)
         {
