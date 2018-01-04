@@ -74,11 +74,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\MembershipTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Uyelik.DAL\Uyelik.DAL.csproj">
+      <Project>{864b961e-1cec-42ef-b463-786cd389dae7}</Project>
+      <Name>Uyelik.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Uyelik.Entity\Uyelik.Entity.csproj">
+      <Project>{f2fed8d3-a3fc-496f-923c-79dd32b6d721}</Project>
+      <Name>Uyelik.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Settings\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

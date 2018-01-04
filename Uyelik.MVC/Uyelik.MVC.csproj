@@ -235,6 +235,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Uyelik.BLL\Uyelik.BLL.csproj">
+      <Project>{132316b4-7add-4ab2-9068-5ecbd6ff62e9}</Project>
+      <Name>Uyelik.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Uyelik.Entity\Uyelik.Entity.csproj">
+      <Project>{f2fed8d3-a3fc-496f-923c-79dd32b6d721}</Project>
+      <Name>Uyelik.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
