@@ -74,6 +74,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201801040838513_a1.cs" />
+    <Compile Include="Migrations\201801040838513_a1.Designer.cs">
+      <DependentUpon>201801040838513_a1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -86,6 +91,11 @@
       <Project>{f2fed8d3-a3fc-496f-923c-79dd32b6d721}</Project>
       <Name>Uyelik.Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201801040838513_a1.resx">
+      <DependentUpon>201801040838513_a1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
