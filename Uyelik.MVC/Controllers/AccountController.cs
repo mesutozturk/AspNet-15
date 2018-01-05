@@ -19,6 +19,7 @@ namespace Uyelik.MVC.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
