@@ -72,9 +72,24 @@ namespace Uyelik.MVC.Controllers
             }
         }
         // GET: Account
-        public ActionResult Login()
+        public ActionResult Login(string ReturnUrl)
         {
-            return View();
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                if (HttpContext.User.IsInRole("Passive"))
+                {
+                    ViewBag.sonuc = "Sistemi kullanabilmeniz için eposta adresinizi aktifleştirmeniz gerekmektedir.";
+                }
+                var url = ReturnUrl.Split('/');
+                // admin/kullaniciduzenle/5
+                // admin/kullanicilar
+                if (url[1].ToLower().Contains("admin"))
+                {
+                    ViewBag.sonuc = "Bu alana yönetici hesabınızla girebilirsiniz. Lütfen yönetici bilgilerinizle giriş yapınız.";
+                }
+            }
+            var model = new LoginViewModel() { ReturnUrl = ReturnUrl };
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -95,7 +110,20 @@ namespace Uyelik.MVC.Controllers
             {
                 IsPersistent = model.RememberMe
             }, userIdentity);
-            return RedirectToAction("Index", "Home");
+            if (string.IsNullOrEmpty(model.ReturnUrl))
+                return RedirectToAction("Index", "Home");
+            try
+            {
+                var url = model.ReturnUrl.Split('/');
+                if (url.Length == 4)
+                    return RedirectToAction(url[2], url[1], new { id = url[3] });
+                else
+                    return RedirectToAction(url[2], url[1]);
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
         [Authorize]
         public ActionResult Logout()
