@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Uyelik.BLL.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using Uyelik.MVC.Services;
 
 namespace Uyelik.MVC.Controllers
 {
@@ -23,6 +24,7 @@ namespace Uyelik.MVC.Controllers
             return View();
         }
 
+        [MyAuth(Kamil = "Büyük kamil")]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

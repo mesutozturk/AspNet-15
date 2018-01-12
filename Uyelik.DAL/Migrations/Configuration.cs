@@ -1,3 +1,5 @@
+using Uyelik.Entity.Entities;
+
 namespace Uyelik.DAL.Migrations
 {
     using System;
@@ -18,6 +20,7 @@ namespace Uyelik.DAL.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            
         }
     }
 }

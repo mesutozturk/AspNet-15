@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Uyelik.BLL.Account;
+using Uyelik.BLL.Repository;
 using Uyelik.Entity.Enums;
 using Uyelik.Entity.IdentityModels;
 
@@ -31,6 +32,8 @@ namespace Uyelik.MVC
                         Name=rol
                     });
             }
+
+            new MessageRepo();
         }
     }
 }

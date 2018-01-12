@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Uyelik.Entity.IdentityModels;
+using Uyelik.Entity.Validator;
 
 namespace Uyelik.Entity.Entities
 {
@@ -18,6 +19,8 @@ namespace Uyelik.Entity.Entities
         [Required]
         public string SentTo { get; set; }
 
+        [Validator.Range(MaxValue = 10, MinValue = 1,ErrorMessage = "Level 1-10 aralığında olmalıdır")]
+        public int Level { get; set; }
 
         [ForeignKey("SendBy")]
         public virtual ApplicationUser Sender { get; set; }
