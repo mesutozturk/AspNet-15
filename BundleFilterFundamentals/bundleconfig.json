@@ -1,0 +1,24 @@
+[
+  {
+    "outputFileName": "Scripts/bundlescripts.js",
+    "inputFiles": [
+      "Scripts/jquery-3.2.1.js",
+      "Scripts/bootstrap.js",
+      "Scripts/jquery-ui-1.12.1.js",
+      "Scripts/jquery.validate.js",
+      "Scripts/moment.js",
+      "Scripts/moment-with-locales.js",
+      "Scripts/app.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/bundlestyles.css",
+    "inputFiles": [
+      "Content/bootstrap.css",
+      "Content/bootstrap-theme.css",
+      "Content/themes/base/jquery-ui.css",
+      "Content/themes/base/all.css",
+      "Content/site.css"
+    ]
+  }
+]
