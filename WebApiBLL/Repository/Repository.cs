@@ -8,6 +8,7 @@ namespace WebApiBLL.Repository
     public class SupplierRepo : RepositoryBase<Supplier, int> { }
     public class OrderRepo : RepositoryBase<Order, int> { }
     public class ShipperRepo : RepositoryBase<Shipper, int> { }
+    public class InvoiceRepo : RepositoryBase<Invoice, int> { }
     public class OrderDetailRepo : RepositoryBase<Order_Detail, int> { }
     public class CustomerRepo : RepositoryBase<Customer, string> { }
 }
