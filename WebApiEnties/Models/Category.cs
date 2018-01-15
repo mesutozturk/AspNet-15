@@ -1,3 +1,5 @@
+
+
 namespace WebApiEntities.Models
 {
     using System;
@@ -5,6 +7,7 @@ namespace WebApiEntities.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using Newtonsoft.Json;
 
     public partial class Category
     {
@@ -26,6 +29,7 @@ namespace WebApiEntities.Models
         [Column(TypeName = "image")]
         public byte[] Picture { get; set; }
 
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
     }
