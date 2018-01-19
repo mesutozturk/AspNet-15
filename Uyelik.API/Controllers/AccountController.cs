@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using Uyelik.API.Models;
@@ -82,6 +83,100 @@ namespace Uyelik.API.Controllers
                 {
                     success = false,
                     message = $"Kayıt işleminde bir hata oldu. Lütfen tekrar deneyin. {ex.Message}"
+                };
+            }
+        }
+        [Authorize]
+        public object GetLoginData()
+        {
+            var user = MembershipTools.NewUserManager().FindById(HttpContext.Current.User.Identity.GetUserId());
+            var rol = MembershipTools.NewRoleManager().FindById(user.Roles.First().RoleId).Name;
+            return new
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Name = user.Name,
+                Surname = user.Surname,
+                Email = user.Email,
+                Rol=rol
+            };
+        }
+        [Authorize]
+        [HttpPost]
+        public ResponseModel UpdateProfile([FromBody]UpdateProfileViewModel value)
+        {
+            var userStore = MembershipTools.NewUserStore();
+            var userManager = new UserManager<ApplicationUser>(userStore);
+            var user = userManager.FindById(value.Id);
+            if (user == null)
+                return new ResponseModel()
+                {
+                    success = false,
+                    message = "Kullanıcı bulunamadı"
+                };
+            try
+            {
+                user.Name = value.Name;
+                user.Surname = value.Surname;
+                user.Email = value.Email;
+                userStore.Context.SaveChanges();
+                return new ResponseModel()
+                {
+                    success = true,
+                    message = "Güncelleme başarılı"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseModel()
+                {
+                    success = false,
+                    message = $"Güncelleme Başarısız. {ex.Message}"
+                };
+            }
+        }
+        [Authorize]
+        [HttpPost]
+        public ResponseModel UpdatePassword([FromBody]ChangePasswordViewModel value)
+        {
+            if(value.NewPassword!=value.NewPasswordConfrim)
+                return new ResponseModel
+                {
+                    success = false,
+                    message = "Şifreler Uyuşmuyor"
+                };
+            var userStore = MembershipTools.NewUserStore();
+            var userManager = new UserManager<ApplicationUser>(userStore);
+
+            var user = userManager.FindById(value.Id);
+            if (user == null)
+                return new ResponseModel
+                {
+                    success = false,
+                    message = "Kullanıcı bulunamadı"
+                };
+            try
+            {
+                var sonuc = userManager.ChangePassword(value.Id, value.OldPassword, value.NewPassword);
+                if (sonuc.Succeeded)
+                    return new ResponseModel()
+                    {
+                        success = true,
+                        message = "Şifre güncellenmiştir"
+                    };
+                else
+                    return new ResponseModel
+                    {
+                        success = false,
+                        message = "Şifre güncelleme işleminde hata"
+                    };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseModel
+                {
+                    success = false,
+                    message = $"Şifre güncelleme işleminde hata: {ex.Message}"
                 };
             }
         }

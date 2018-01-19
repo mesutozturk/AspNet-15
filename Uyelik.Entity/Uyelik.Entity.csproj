@@ -80,10 +80,13 @@
     <Compile Include="IdentityModels\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validator\RangeAttribute.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MailModel.cs" />
     <Compile Include="ViewModels\ProfileViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\SendMessageViewModel.cs" />
+    <Compile Include="ViewModels\UpdateProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
