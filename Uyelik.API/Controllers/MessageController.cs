@@ -73,5 +73,35 @@ namespace Uyelik.API.Controllers
                 };
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public ResponseModel DeleteMessage(long? id)
+        {
+            if(id==null)
+                return new ResponseModel()
+                {
+                    success = false,
+                    message = "Silinecek message id yollanamadı"
+                };
+            try
+            {
+                var silinecek = new MessageRepo().GetById(id.Value);
+                new MessageRepo().Delete(silinecek);
+                return new ResponseModel()
+                {
+                    success = true,
+                    message = $"{silinecek.Content} mesaji silindi"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new ResponseModel()
+                {
+                    success = false,
+                    message = $"Veritabanı bağlantı sorunu: {ex.Message}"
+                };
+            }
+        }
     }
 }
